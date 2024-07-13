@@ -1,0 +1,42 @@
+@startuml
+class org.example.creation.FactoryMethod {
++ {static} void main(String[])
+}
+
+interface org.example.creation.FactoryMethod$Shape {
+~ void draw()
+}
+
+class org.example.creation.FactoryMethod$Circle {
++ void draw()
+}
+
+class org.example.creation.FactoryMethod$Rectangle {
++ void draw()
+}
+
+abstract class org.example.creation.FactoryMethod$ShapeFactory {
+~ {abstract}Shape createShape()
+}
+
+class org.example.creation.FactoryMethod$CircleFactory {
+~ Shape createShape()
+}
+
+class org.example.creation.FactoryMethod$RectangleFactory {
+~ Shape createShape()
+}
+
+
+
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$Shape
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$Circle
+org.example.creation.Shape <|.. org.example.creation.FactoryMethod$Circle
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$Rectangle
+org.example.creation.Shape <|.. org.example.creation.FactoryMethod$Rectangle
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$ShapeFactory
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$CircleFactory
+org.example.creation.ShapeFactory <|-- org.example.creation.FactoryMethod$CircleFactory
+org.example.creation.FactoryMethod +.. org.example.creation.FactoryMethod$RectangleFactory
+org.example.creation.ShapeFactory <|-- org.example.creation.FactoryMethod$RectangleFactory
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+class org.example.creation.Builder {
++ {static} void main(String[])
+}
+
+class org.example.creation.Builder$House {
+- String foundation
+- String structure
+- String roof
+- String interior
++ void setFoundation(String)
++ void setStructure(String)
++ void setRoof(String)
++ void setInterior(String)
++ String toString()
+}
+
+
+abstract class org.example.creation.Builder$HouseBuilder {
+# House house
++ {abstract}void buildFoundation()
++ {abstract}void buildStructure()
++ {abstract}void buildRoof()
++ {abstract}void buildInterior()
++ House getHouse()
+}
+
+
+class org.example.creation.Builder$ConcreteHouseBuilder {
++ void buildFoundation()
++ void buildStructure()
++ void buildRoof()
++ void buildInterior()
+}
+
+class org.example.creation.Builder$LuxuryHouseBuilder {
++ void buildFoundation()
++ void buildStructure()
++ void buildRoof()
++ void buildInterior()
+}
+
+class org.example.creation.Builder$Director {
+- HouseBuilder builder
++ House constructHouse()
+}
+
+
+
+
+org.example.creation.Builder +.. org.example.creation.Builder$House
+org.example.creation.Builder +.. org.example.creation.Builder$HouseBuilder
+org.example.creation.Builder +.. org.example.creation.Builder$ConcreteHouseBuilder
+org.example.creation.HouseBuilder <|-- org.example.creation.Builder$ConcreteHouseBuilder
+org.example.creation.Builder +.. org.example.creation.Builder$LuxuryHouseBuilder
+org.example.creation.HouseBuilder <|-- org.example.creation.Builder$LuxuryHouseBuilder
+org.example.creation.Builder +.. org.example.creation.Builder$Director
+@enduml

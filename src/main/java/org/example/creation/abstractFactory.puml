@@ -1,0 +1,62 @@
+@startuml
+class org.example.creation.AbstractFactory {
++ {static} void main(String[])
+}
+
+interface org.example.creation.AbstractFactory$OperatingSystem {
+~ void run()
+}
+
+class org.example.creation.AbstractFactory$WindowsOS {
++ void run()
+}
+
+class org.example.creation.AbstractFactory$LinuxOS {
++ void run()
+}
+
+interface org.example.creation.AbstractFactory$Application {
+~ void open()
+}
+
+class org.example.creation.AbstractFactory$WordApplication {
++ void open()
+}
+
+class org.example.creation.AbstractFactory$ExcelApplication {
++ void open()
+}
+
+interface org.example.creation.AbstractFactory$SoftwareFactory {
+~ OperatingSystem createOperatingSystem()
+~ Application createApplication()
+}
+
+class org.example.creation.AbstractFactory$WindowsFactory {
++ OperatingSystem createOperatingSystem()
++ Application createApplication()
+}
+
+class org.example.creation.AbstractFactory$LinuxFactory {
++ OperatingSystem createOperatingSystem()
++ Application createApplication()
+}
+
+
+
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$OperatingSystem
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$WindowsOS
+org.example.creation.OperatingSystem <|.. org.example.creation.AbstractFactory$WindowsOS
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$LinuxOS
+org.example.creation.OperatingSystem <|.. org.example.creation.AbstractFactory$LinuxOS
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$Application
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$WordApplication
+org.example.creation.Application <|.. org.example.creation.AbstractFactory$WordApplication
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$ExcelApplication
+org.example.creation.Application <|.. org.example.creation.AbstractFactory$ExcelApplication
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$SoftwareFactory
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$WindowsFactory
+org.example.creation.SoftwareFactory <|.. org.example.creation.AbstractFactory$WindowsFactory
+org.example.creation.AbstractFactory +.. org.example.creation.AbstractFactory$LinuxFactory
+org.example.creation.SoftwareFactory <|.. org.example.creation.AbstractFactory$LinuxFactory
+@enduml
